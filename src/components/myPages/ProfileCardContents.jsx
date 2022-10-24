@@ -16,7 +16,7 @@ export function ProfileCardContents({ profTitle, categoryId }) {
   return (
     <>
       <div className="card_wrap">
-        <div className="card_title">{profTitle}</div>
+        {/* <div className="card_title">{profTitle}</div> */}
         <div className="card_input_wrap">
           {data &&
             Object.entries(data).map(([key, item]) => {
