@@ -16,7 +16,7 @@ export const useMultiDataList = (tableName, queryKey, queryValueList) => {
   useEffect(() => {
     const rootRef = ref(db);
     const tableRef = child(rootRef, tableName);
-    const dataArray = []
+    const dataArray = [];
 
     for (let i = 0; i < queryValueList.length; i++) {
       // クエリ処理
@@ -27,11 +27,18 @@ export const useMultiDataList = (tableName, queryKey, queryValueList) => {
       );
       onValue(listRef, (snapshot) => {
         const newData = snapshot.val();
-        newData &&
-          dataArray.push(newData)
+        if (newData) {
+          Object.entries(newData).map(([key, item]) => {
+            const dataWithId = {
+              id: key,
+              ...item,
+            };
+            dataArray.push(dataWithId);
+          });
+        }
       });
     }
-    setData(dataArray)
+    setData(dataArray);
   }, []);
 
   return { data };

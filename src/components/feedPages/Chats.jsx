@@ -2,11 +2,11 @@ import { Link, useParams } from "react-router-dom";
 import { ChatContents } from "./ChatContents";
 import { useLocation } from "react-router-dom";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
-// import { useParams } from "react-router-dom";
 
 import "../../css/Chats.css";
 import { useDataRead } from "../../hooks/useDataRead";
 import { useEffect, useState } from "react";
+import { Header } from "../templates/Header";
 
 export function Chats() {
   //useLocationを使ってFeedContentsから値を受け取る
@@ -20,7 +20,6 @@ export function Chats() {
   useEffect(() => {
     if (!location.state) {
       dataRead("questions", params.feedID).then((res) => {
-        console.log(res);
         setQuestiontext(res.content);
       });
     } else {
@@ -29,6 +28,7 @@ export function Chats() {
   }, []);
   return (
     <>
+      <Header />
       <div className="chats_header">
         <div>
           <Link to="/">

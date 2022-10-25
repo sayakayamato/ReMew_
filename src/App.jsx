@@ -3,28 +3,31 @@ import { ChakraProvider } from "@chakra-ui/react";
 import "./css/App.css";
 import "./css/Home.css";
 import { RouterConfig } from "./RouterConfig";
-// For test
-// import { auth } from "./lib/firebase";
 import { AuthProvider } from "./contexts/AuthContext";
 import { TabProvider } from "./contexts/TabContext";
 import { FriendsListProvider } from "./contexts/FriendsListContext";
 import { FriendsIdProvider } from "./contexts/FriendsIdContext";
-// import { TestFirebase } from "./test/TestFirebase";
+import { FriendsUniqueIdProvider } from "./contexts/FriendsUniqueIdContext";
+import { UserDataProvider } from "./contexts/UserDataContext";
 
 function App() {
   return (
     <AuthProvider>
       <ChakraProvider>
         <div className="phone_size">
-          <FriendsListProvider>
-            <FriendsIdProvider>
-              <TabProvider>
-                <BrowserRouter>
-                  <RouterConfig />
-                </BrowserRouter>
-              </TabProvider>
-            </FriendsIdProvider>
-          </FriendsListProvider>
+          <UserDataProvider>
+            <FriendsListProvider>
+              <FriendsIdProvider>
+                <FriendsUniqueIdProvider>
+                  <TabProvider>
+                    <BrowserRouter>
+                      <RouterConfig />
+                    </BrowserRouter>
+                  </TabProvider>
+                </FriendsUniqueIdProvider>
+              </FriendsIdProvider>
+            </FriendsListProvider>
+          </UserDataProvider>
         </div>
       </ChakraProvider>
     </AuthProvider>

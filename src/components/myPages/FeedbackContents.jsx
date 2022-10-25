@@ -7,8 +7,6 @@ import { useAuthContext } from "../../contexts/AuthContext";
 export function FeedbackContents() {
   const { user } = useAuthContext();
   const logedInUserId = user.uid;
-  // const logedInUsername = user.displayName;
-
   const friendList = [logedInUserId];
 
   // TODO: コンポーネント化

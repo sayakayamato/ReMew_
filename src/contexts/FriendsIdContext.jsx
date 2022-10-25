@@ -7,7 +7,7 @@ export const useFriendsIdContext = () => {
 };
 
 export const FriendsIdProvider = ({ children }) => {
-  const [friendsId, setFriendsId] = useState();
+  const [friendsId, setFriendsId] = useState([]);
   const context = {
     friendsId,
     setFriendsId,

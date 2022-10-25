@@ -1,4 +1,3 @@
-// import { Wrap, WrapItem, Center } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useDataList } from "../../hooks/useDataList";
@@ -16,7 +15,6 @@ export function ProfileCardContents({ profTitle, categoryId }) {
   return (
     <>
       <div className="card_wrap">
-        {/* <div className="card_title">{profTitle}</div> */}
         <div className="card_input_wrap">
           {data &&
             Object.entries(data).map(([key, item]) => {
