@@ -1,13 +1,9 @@
-// 9月21日（水）
-// スライダーの作成、微調整が必要と思うが...
-
 import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "../../css/Slider.css";
-// import { Pagination } from "swiper";
 
 import { useFirebase } from "../../hooks/useFirebase";
 

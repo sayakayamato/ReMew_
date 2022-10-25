@@ -3,7 +3,6 @@ import { db } from "../lib/firebase";
 
 export const useDataRead = async (tableName, id) => {
   const dbRef = ref(db);
-  // console.log(dbRef)
   return (
     get(child(dbRef, tableName + "/" + id))
       .then((snapshot) => {

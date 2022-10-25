@@ -3,6 +3,7 @@ import { ProfSampleContents } from "./ProfSampleContents";
 import { useLocation } from "react-router-dom";
 
 import { useDataList } from "../../hooks/useDataList";
+import { Header } from "../templates/Header";
 
 export const ProfSamplePage = () => {
   //useLocationを使ってQuestionDetailContnetsからのstateを受け取る
@@ -13,6 +14,7 @@ export const ProfSamplePage = () => {
 
   return (
     <>
+      <Header />
       <Link to="/">
         <p className="return_button">戻る</p>
       </Link>

@@ -4,6 +4,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useAddFriend } from "../../hooks/useAddFriend";
 import { useFirebase } from "../../hooks/useFirebase";
+import { Header } from "../templates/Header";
 
 export const AddFriendProcess = () => {
   const { user } = useAuthContext();
@@ -26,6 +27,7 @@ export const AddFriendProcess = () => {
   };
   return (
     <>
+      <Header />
       <p>{friendDisplayName}さんを友達に追加する</p>
       {data && (
         <Button leftIcon={<BiUserPlus />} colorScheme="blue" onClick={onClick}>

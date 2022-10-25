@@ -21,9 +21,6 @@ export function ChatContents({ feedId }) {
   const [loggedInUsername, setLoggedInUsername] = useState("");
 
   const dataList = useDataList;
-  console.log(tableName);
-  console.log(queryKey);
-  console.log(queryValue);
   const { data } = dataList(tableName, queryKey, queryValue);
 
   useEffect(() => {

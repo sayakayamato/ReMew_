@@ -1,8 +1,6 @@
-// import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
 import { SwiperSlide } from "swiper/react";
-
 import { ref, child, onValue } from "firebase/database";
+
 import { db } from "../lib/firebase";
 
 export const CategoryList = () => {

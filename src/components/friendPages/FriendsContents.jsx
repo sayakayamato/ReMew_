@@ -1,26 +1,23 @@
 import { FriendsComponent } from "./FriendsComponent";
-import { useAuthContext } from "../../contexts/AuthContext";
-import { useFirebase } from "../../hooks/useFirebase";
 import { useFriendsListContext } from "../../contexts/FriendsListContext";
-import { useEffect } from "react";
+import { sortByStrings } from "../../lib/util/sortByStrings";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export function FriendsContents() {
   const { user } = useAuthContext();
-  const { setFriendsList } = useFriendsListContext();
-  const tableName = "friends/" + user.uid;
-  const { data } = useFirebase(tableName);
-  const friendArr = data && Object.entries(data).map(([key, item]) => {
-    return { key: key, item: item };
-  });
-  useEffect(() => {
-    setFriendsList(friendArr ? friendArr : []);
-  }, [data]);
+  const { friendsList } = useFriendsListContext();
+  const sortedFriendsList = sortByStrings(
+    friendsList ? friendsList : [],
+    "userName"
+  );
   return (
     <ul style={{ listStyle: "none" }}>
-      {data &&
-        Object.entries(data).map(([key, item]) => {
-          return (
-            <li key={key}>
+      {sortedFriendsList &&
+        sortedFriendsList.map((item) => {
+          return item.userId === user.uid ? (
+            <li key={item.userId}></li>
+          ) : (
+            <li key={item.userId}>
               <FriendsComponent
                 userPhoto={item.userPhoto}
                 userName={item.userName}

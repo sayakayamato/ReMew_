@@ -27,16 +27,16 @@ export const useAddFriend = (
     userId: friendUserId,
     userName: friendUserName,
     userPhoto: friendUserPhotoUrl,
+    ownerId: loggedInUserId
   };
   const loggedInUserData = {
     userId: loggedInUserId,
     userName: loggedInUserName,
     userPhoto: loggedInUserPhotoUrl,
+    ownerId: friendUserId
   };
 
-  const tableLoggedIn = `friends/${loggedInUserId}`;
-  dataCreate(tableLoggedIn, friendUserData);
-
-  const tableFriend = `friends/${friendUserId}`;
-  dataCreate(tableFriend, loggedInUserData);
+  const tableName = `friends`;
+  dataCreate(tableName, friendUserData);
+  dataCreate(tableName, loggedInUserData);
 };

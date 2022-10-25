@@ -1,16 +1,9 @@
-import { useLocation } from "react-router-dom";
-import { Textarea, Flex } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-import { ChevronLeftIcon } from "@chakra-ui/icons";
-import { Link } from "react-router-dom";
-import { useDataCreate } from "../../hooks/useDataCreate";
-import { Text } from "@chakra-ui/react";
-
-// import { useNavigate } from "react-router-dom"
-
 import { TwitterIcon, TwitterShareButton } from "react-share";
 
 import {
+  Textarea,
+  Text,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -21,19 +14,20 @@ import {
   Button,
   useDisclosure,
 } from "@chakra-ui/react";
+
+import { useDataCreate } from "../../hooks/useDataCreate";
 import { useAuthContext } from "../../contexts/AuthContext";
 
-export function CollectFeedback() {
+export function CollectFeedback({ initialText }) {
   //useLocationを使ってQuestionDetailContnetsからのstateを受け取る
-  const state = useLocation().state;
-  let [value, setValue] = useState("");
+  const [value, setValue] = useState("");
 
   useEffect(() => {
-    if (state) setValue(state);
+    if (initialText) setValue(initialText);
   }, []);
 
-  let handleInputChange = (e) => {
-    let inputValue = e.target.value;
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
     setValue(inputValue);
   };
 
@@ -54,7 +48,7 @@ export function CollectFeedback() {
 
     dataCreate(tableName, struct)
       .then((value) => {
-        setFeedUrl("https://knowme.vercel.app/chats/" + String(value));
+        setFeedUrl(`${process.env.REACT_APP_BASE_URL}/chats/` + String(value));
       })
       .then(() => {
         onOpen();
@@ -75,11 +69,9 @@ export function CollectFeedback() {
   return (
     <>
       <div className="collect_feedback_top">
-        
-          <Text fontSize="xl" className="collect_feedback_title">
-            質問を投稿する
-          </Text>
-        
+        <Text fontSize="xl" className="collect_feedback_title">
+          質問を投稿する
+        </Text>
       </div>
       <div className="collect_feedback_textarea">
         <Textarea
