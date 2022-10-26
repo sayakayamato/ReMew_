@@ -38,28 +38,40 @@ body {
   align-items: center;
   border-radius: 20px;
 
-  background-color: rgba(255, 255, 255, 0.1); /* 背景色 */
-  border: 1px solid rgba(255, 255, 255, 0.4); /* ボーダー */
+  /* background-color: rgba(255, 255, 255, 0.1); 
+  border: 1px solid rgba(255, 255, 255, 0.4); 
   border-right-color: rgba(255, 255, 255, 0.2);
   border-bottom-color: rgba(255, 255, 255, 0.2);
   border-radius: 15px;
-  -webkit-backdrop-filter: blur(20px); /* ぼかしエフェクト */
+  -webkit-backdrop-filter: blur(20px); 
   backdrop-filter: blur(20px);
-  box-shadow: 0 5px 20px rgba(255, 152, 79, 0.5); /* 薄い影 */
+  box-shadow: 0 5px 20px rgba(255, 152, 79, 0.5);  */
+  background-color: white;
+}
+
+.swiper_img{
+  width: auto;
+  height: 90px;
+  object-fit: cover;
+  object-position: 50% 0%;
+  border-radius: 20px 20px 0px 0px;
 }
 
 
-
 .mySwiper{
-  height: 100px;
+  height: 120px;
   width: 90%;
   margin-left: 20px;
+}
+
+.category_name{
+  font-size: 12px;
 }
 
 .collect_feedback_category{
   margin: 20px;
   background: gray;
-  height: 170px;
+  height: 190px;
   border-radius: 20px;
   background: rgb(239,137,202);
   background: linear-gradient(41deg, rgba(239,137,202,0.5620842086834734) 0%, rgba(236,154,21,0.5536808473389356) 100%);
@@ -68,7 +80,7 @@ body {
 .collect_my_answer{
   margin: 20px;
   background: gray;
-  height: 170px;
+  height: 190px;
   border-radius: 20px;
   background: rgb(137,220,239);
   background: linear-gradient(41deg, rgba(137,220,239,0.5620842086834734) 0%, rgba(123,21,236,0.5536808473389356) 100%);
