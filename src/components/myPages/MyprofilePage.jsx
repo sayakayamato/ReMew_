@@ -1,5 +1,4 @@
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import { FeedbackContents } from "./FeedbackContents";
 import { KeywordsContents } from "./KeywordsContents";
 import { ProfileTabContents } from "./ProfiileTabContents";
 import { ProfileIcon } from "./ProfileIcon";
