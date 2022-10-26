@@ -25,7 +25,7 @@ export function MyProfilePage() {
           <div className="profile_icon">
             <ProfileIcon />
           </div>
-          <div className="profile_name">{user.displayName}</div>
+          <div className="profile_name">{userData.displayName}</div>
         </div>
         <div className="profile_contents">
           <Tabs>
