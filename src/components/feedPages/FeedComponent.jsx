@@ -1,22 +1,21 @@
 import { Avatar, Box } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useMultiDataList } from "../../hooks/useMultiDataList";
-import { useAuthContext } from "../../contexts/AuthContext";
 import { useFriendsIdContext } from "../../contexts/FriendsIdContext";
 import { sortByStrings } from "../../lib/util/sortByStrings";
 import { useFriendsListContext } from "../../contexts/FriendsListContext";
+import { useUserDataContext } from "../../contexts/UserDataContext";
 
-export const FeedComponent = () => {
+export const FeedComponent = ({ friendsMode }) => {
   const navigate = useNavigate();
-  const { user } = useAuthContext();
+  const { userData } = useUserDataContext();
   const { friendsId } = useFriendsIdContext();
   const { friendsList } = useFriendsListContext();
 
   const multiDataList = useMultiDataList;
   const tableName = "questions";
   const queryKey = "userId";
-
-  const queryValueList = [...friendsId];
+  const queryValueList = friendsMode ? [...friendsId] : [userData.userId];
   const { data: feedContents } = multiDataList(
     tableName,
     queryKey,
@@ -42,9 +41,19 @@ export const FeedComponent = () => {
     if (feedContents.length === 0) {
       return (
         <>
-          <p>投稿がありません</p>
-          <p>右下のボタンから投稿するか</p>
-          <p>Friendタブから友達追加しましょう</p>
+          {friendsMode ? (
+            <>
+              <p>投稿がありません</p>
+              <p>上のメニューか投稿タブから投稿するか</p>
+              <p>Friendタブから友達追加しましょう</p>
+            </>
+          ) : (
+            <>
+              <p>投稿がありません</p>
+              <p>HOMEタブのメニューか</p>
+              <p>投稿タブから投稿しましょう</p>
+            </>
+          )}
         </>
       );
     } else {

@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Link } from "@chakra-ui/react";
 import { BiUserPlus } from "react-icons/bi";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
@@ -25,6 +25,16 @@ export const AddFriendProcess = () => {
     );
     navigate("/");
   };
+  if (!user) {
+    return (
+      <>
+        <p>先にログインしてから読み込んでください</p>
+        <Button>
+          <Link to="/login">ログイン画面へ </Link>
+        </Button>
+      </>
+    );
+  }
   return (
     <>
       <Header />

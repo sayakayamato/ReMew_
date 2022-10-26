@@ -40,7 +40,7 @@ export const Header = () => {
         // setErrors(error);
       }
     );
-  }, [user.uid, setUserData]);
+  }, [setUserData, user.uid]);
 
   // フレンドリスト（ID版とデータ版
   // リスト

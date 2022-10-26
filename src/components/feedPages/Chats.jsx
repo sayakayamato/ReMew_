@@ -7,9 +7,11 @@ import "../../css/Chats.css";
 import { useDataRead } from "../../hooks/useDataRead";
 import { useEffect, useState } from "react";
 import { Header } from "../templates/Header";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export function Chats() {
   //useLocationを使ってFeedContentsから値を受け取る
+  const { user } = useAuthContext();
   const location = useLocation();
   const dataRead = useDataRead;
   const params = useParams();
@@ -28,7 +30,7 @@ export function Chats() {
   }, []);
   return (
     <>
-      <Header />
+      {user && (<Header />)}
       <div className="chats_header">
         <div>
           <Link to="/">
