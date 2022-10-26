@@ -13,6 +13,7 @@ export const UserDataProvider = ({ children }) => {
     displayName: user ? user.displayName : "",
     userPhoto: user ? user.photoURL : "",
     userId: user ? user.uid : "",
+    background: "",
   });
   const context = {
     userData,

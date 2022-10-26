@@ -20,7 +20,10 @@ export const RouterConfig = () => {
         <Route path="/friend" element={<AddFriendProcess />} />
         <Route path="/questionsamples" element={<QuestionSamplePage />} />
         <Route path="/profsamples" element={<ProfSamplePage />} />
-        <Route path="/collectfeedback" element={<CollectFeedbackWithHeader />} />
+        <Route
+          path="/collectfeedback"
+          element={<CollectFeedbackWithHeader />}
+        />
         <Route path="/undertabbar" element={<FeedContents />} />
         <Route path="/chats/:feedID" element={<Chats />} />
         <Route path="/profs/:profId" element={<Profs />} />

@@ -113,7 +113,6 @@ export function CollectFeedback({ initialText }) {
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               閉じる
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

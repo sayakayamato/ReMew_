@@ -7,7 +7,7 @@ export function FeedContents() {
 
   return (
     <>
-      <FeedComponent />
+      <FeedComponent friendsMode={true} />
       <button onClick={NewFeedContents} className="feed_add_button">
         +
       </button>

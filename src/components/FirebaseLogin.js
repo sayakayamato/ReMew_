@@ -23,7 +23,10 @@ function FirebaseLogin() {
       } else {
         const usersRef = ref(db, "users/" + user.uid);
         onValue(usersRef, (snapshot) => {
+          console.log("snapshot.val()")
+          console.log(snapshot.val())
           if (snapshot.val() === null) {
+            console.log("reset users data")
             set(usersRef, {
               userId: user.uid,
               displayName: user.displayName,

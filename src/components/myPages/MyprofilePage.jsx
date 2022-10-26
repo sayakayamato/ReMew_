@@ -5,6 +5,7 @@ import { ProfileTabContents } from "./ProfiileTabContents";
 import { ProfileIcon } from "./ProfileIcon";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useUserDataContext } from "../../contexts/UserDataContext";
+import { FeedComponent } from "../feedPages/FeedComponent";
 
 export function MyProfilePage() {
   const { user } = useAuthContext();
@@ -42,7 +43,7 @@ export function MyProfilePage() {
                 <KeywordsContents />
               </TabPanel>
               <TabPanel>
-                <FeedbackContents />
+                <FeedComponent friendsMode={false} />
               </TabPanel>
             </TabPanels>
           </Tabs>

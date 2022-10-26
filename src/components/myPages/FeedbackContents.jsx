@@ -28,13 +28,12 @@ export function FeedbackContents() {
     .filter((e) => typeof e !== "undefined");
 
   const navigate = useNavigate();
-  const NewFeedContents = () => navigate("/CollectFeedback");
   //クリックされた質問判定
   const WhatFeed = (e) => {
     //配列のキーとidが一致してるときにできる処理...
     const pushQuestionID = e.target.id;
     const whatfeedtext = e.target.innerText; //記入した質問本文を定数に入れる
-    navigate(`/Chats/${pushQuestionID}`, {
+    navigate(`/chats/${pushQuestionID}`, {
       state: { whatfeedtext: whatfeedtext, pushQuestionID: pushQuestionID },
     }); //ページ遷移と共に値を持っていく
   };
@@ -62,7 +61,6 @@ export function FeedbackContents() {
           );
         })
       )}
-      <button onClick={NewFeedContents}>+</button>
     </>
   );
 }
