@@ -36,6 +36,5 @@ export const useMultiDataList = (tableName, queryKey, queryValueList) => {
     }
     setData(dataArray);
   }, []);
-
   return { data };
 };
