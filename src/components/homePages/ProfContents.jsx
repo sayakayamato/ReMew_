@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input } from "@chakra-ui/react";
+import { Avatar, Input } from "@chakra-ui/react";
 
 import { useDataList } from "../../hooks/useDataList";
 import { useDataCreate } from "../../hooks/useDataCreate";
@@ -7,19 +7,21 @@ import { useDataCreate } from "../../hooks/useDataCreate";
 import "../../css/Chats.css";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useFriendsIdContext } from "../../contexts/FriendsIdContext";
+import { useFriendsListContext } from "../../contexts/FriendsListContext";
 
 export function ProfContents({ profId, profText, categoryId }) {
   const [inputChatText, setInputChatText] = useState("");
   const dataCreate = useDataCreate;
   const tableName = "profs";
   const { user } = useAuthContext();
+  const { friendsList } = useFriendsListContext();
 
   const dataList = useDataList;
 
   const { friendsId } = useFriendsIdContext();
 
   const tmpArr = [];
-  const listId = [user.uid, ...friendsId]
+  const listId = [...friendsId];
 
   for (let i = 0; i < listId.length; i++) {
     const queryKey = "combProfUserId";
@@ -58,7 +60,19 @@ export function ProfContents({ profId, profText, categoryId }) {
                   key={key}
                   className={item.resUserId === user.uid ? "right" : "left"}
                 >
-                  <p className="chat_send_user">{item.resUsername}</p>
+                  <Avatar
+                    src={
+                      friendsList.find((e) => e.userId === item.resUserId)
+                        .userPhoto
+                    }
+                    alt={item.resUsername}
+                  />
+                  <p className="chat_send_user">
+                    {
+                      friendsList.find((e) => e.userId === item.resUserId)
+                        .userName
+                    }
+                  </p>
                   <p className="chat_send_text">{item.content}</p>
                 </div>
               );

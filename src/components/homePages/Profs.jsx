@@ -34,14 +34,9 @@ export function Profs() {
     <>
       <Header />
       <div className="chats_header">
-        <div>
-          <Link to="/">
-            <ChevronLeftIcon boxSize={6} className="return_button" />
-          </Link>
-        </div>
-        <div className="chats_title">
-          <p className="chat_title_text">プロフに回答する</p>
-        </div>
+        <Link to="/">
+          <ChevronLeftIcon boxSize={6} className="return_button" />
+        </Link>
       </div>
 
       <div className="chats_question">{profText}</div>

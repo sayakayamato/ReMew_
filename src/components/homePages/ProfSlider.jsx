@@ -32,6 +32,7 @@ export const ProfSlider = () => {
         {Object.entries(data).map(([key, item]) => (
           <SwiperSlide key={key} className="category_box">
             <button onClick={WhatCategory}>
+              <img src={item.image || ""} alt="" />
               <div className="category_name" id={key}>
                 {String(item.content)}
               </div>

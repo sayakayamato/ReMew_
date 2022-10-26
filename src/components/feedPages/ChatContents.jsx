@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Input } from "@chakra-ui/react";
+import { Avatar, Input } from "@chakra-ui/react";
 
 import { useDataList } from "../../hooks/useDataList";
 import { useDataCreate } from "../../hooks/useDataCreate";
 
 import "../../css/Chats.css";
 import { useAuthContext } from "../../contexts/AuthContext";
+import { useFriendsListContext } from "../../contexts/FriendsListContext";
 
 export function ChatContents({ feedId }) {
   //inputに入力したチャットテキスト
@@ -16,6 +17,7 @@ export function ChatContents({ feedId }) {
   const queryKey = "feedId";
   const queryValue = feedId;
   const { user } = useAuthContext();
+  const { friendsList } = useFriendsListContext();
   const [anonymousUsername, setAnonymousUsername] = useState("");
   const [loggedInUserId, setLoggedInUserId] = useState("");
   const [loggedInUsername, setLoggedInUsername] = useState("");
@@ -52,7 +54,6 @@ export function ChatContents({ feedId }) {
     dataCreate(tableName, newChatObject);
     setInputChatText("");
   };
-
   return (
     <>
       <div className="chats_answer">
@@ -63,7 +64,29 @@ export function ChatContents({ feedId }) {
                 key={key}
                 className={item.resUserId === loggedInUserId ? "right" : "left"}
               >
-                <p className="chat_send_user">{item.resUsername}</p>
+                {item.resUserId === "anonymous" ? (
+                  <>
+                    <Avatar />
+                    <p className="chat_send_user">{item.resUsername}</p>
+                  </>
+                ) : (
+                  <>
+                    <Avatar
+                      src={
+                        friendsList.find((e) => e.userId === item.resUserId)
+                          .userPhoto
+                      }
+                      alt={item.resUsername}
+                    />
+                    <p className="chat_send_user">
+                      {
+                        friendsList.find((e) => e.userId === item.resUserId)
+                          .userName
+                      }
+                    </p>
+                  </>
+                )}
+
                 <p className="chat_send_text">{item.content}</p>
               </div>
             );
