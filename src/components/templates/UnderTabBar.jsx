@@ -57,7 +57,7 @@ export function UnderTabBar() {
               <MdOutlineArticle />
               投稿
             </Tab>
-            <Tab color={"#704116"}>Myプロフ</Tab>
+            <Tab color={"#704116"}>プロフ</Tab>
             <Tab color={"#704116"}>
               <MdGroup />
               Friend
