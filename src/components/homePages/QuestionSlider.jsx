@@ -32,14 +32,12 @@ export function QuestionSlider() {
         {Object.entries(data).map(([key, item]) => (
           <SwiperSlide key={key} className="category_box">
             <button onClick={WhatCategory}>
-              <img className="swiper_img" src={item.image || ""} alt="" />
               <div className="category_name" id={key}>
+                <img className="swiper_img" src={item.image || ""} alt="" />
                 {String(item.content)}
               </div>
             </button>
-        
           </SwiperSlide>
-          
         ))}
       </Swiper>
     </>
