@@ -2,12 +2,10 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { KeywordsContents } from "./KeywordsContents";
 import { ProfileTabContents } from "./ProfiileTabContents";
 import { ProfileIcon } from "./ProfileIcon";
-import { useAuthContext } from "../../contexts/AuthContext";
 import { useUserDataContext } from "../../contexts/UserDataContext";
 import { FeedComponent } from "../feedPages/FeedComponent";
 
 export function MyProfilePage() {
-  const { user } = useAuthContext();
   const { userData } = useUserDataContext();
   return (
     <>
