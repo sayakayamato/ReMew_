@@ -68,13 +68,19 @@ export const FeedComponent = ({ friendsMode }) => {
             mb={5}
             key={content.id}
           >
-            <Avatar
-              name={content.username}
-              src={
-                friendsList.find((e) => e.userId === content.userId).userPhoto
-              }
-            ></Avatar>
-            <p className="feed_user_name">{friendsList.find((e) => e.userId === content.userId).userName}</p>
+            <div className="feed_user_info">
+              <Avatar
+                name={content.username}
+                src={
+                  friendsList.find((e) => e.userId === content.userId).userPhoto
+                }
+                className="feed_icon"
+                size="sm"
+              ></Avatar>
+              <p className="feed_user_name">
+                {friendsList.find((e) => e.userId === content.userId).userName}
+              </p>
+            </div>
             <p
               className="feed_contents_text"
               onClick={WhatFeed}

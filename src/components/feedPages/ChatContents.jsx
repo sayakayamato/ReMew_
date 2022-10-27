@@ -66,28 +66,43 @@ export function ChatContents({ feedId }) {
               >
                 {item.resUserId === "anonymous" ? (
                   <>
-                    <Avatar />
-                    <p className="chat_send_user">{item.resUsername}</p>
+                    <div className="chats_user_info">
+                      <div className="chat_user_icon">
+                        <Avatar size="md" />
+                      </div>
+                      <div>
+                        <p className="chat_send_user">{item.resUsername}</p>
+                      </div>
+                    </div>
                   </>
                 ) : (
                   <>
-                    <Avatar
-                      src={
-                        friendsList.find((e) => e.userId === item.resUserId)
-                          .userPhoto
-                      }
-                      alt={item.resUsername}
-                    />
-                    <p className="chat_send_user">
-                      {
-                        friendsList.find((e) => e.userId === item.resUserId)
-                          .userName
-                      }
-                    </p>
+                    
+                      
+                      <div>
+                        <p>
+                          {
+                            friendsList.find((e) => e.userId === item.resUserId)
+                              .userName
+                          }
+                        </p>
+                      </div>
+                      <div>
+                        <Avatar
+                          size="md"
+                          src={
+                            friendsList.find((e) => e.userId === item.resUserId)
+                              .userPhoto
+                          }
+                          alt={item.resUsername}
+                        />
+                      </div>
+                    
                   </>
                 )}
-
-                <p className="chat_send_text">{item.content}</p>
+                <div className="text_feeld">
+                  <p className="chat_send_text">{item.content}</p>
+                </div>
               </div>
             );
           })}
@@ -104,7 +119,7 @@ export function ChatContents({ feedId }) {
           )}
           {!user && <input type="hidden" value="anonymous" />}
           <Input
-            placeholder="フィードバックを送信"
+            placeholder="コメントを送信"
             value={inputChatText}
             onChange={(e) => setInputChatText(e.target.value)}
             w={"85%"}
