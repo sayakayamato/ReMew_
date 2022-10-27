@@ -1,9 +1,18 @@
 import { auth } from "../lib/firebase";
 import { useNavigate } from "react-router-dom";
+import { useFriendsListContext } from "../contexts/FriendsListContext";
+import { useFriendsIdContext } from "../contexts/FriendsIdContext";
+import { useFriendsUniqueIdContext } from "../contexts/FriendsUniqueIdContext";
 
 export const SignOutButton = () => {
   const navigate = useNavigate();
+  const { setFriendsList } = useFriendsListContext();
+  const { setFriendsId } = useFriendsIdContext();
+  const { setFriendsUniqueId } = useFriendsUniqueIdContext();
   const signOut = () => {
+    setFriendsList([]);
+    setFriendsId([]);
+    setFriendsUniqueId([]);
     auth.signOut();
     navigate("/login");
   };

@@ -1,9 +1,9 @@
 import { ProfileTabHome } from "./ProfileTabHome";
 
-export function ProfileTabContents() {
+export function ProfileTabContents({displayUser}) {
   return (
     <>
-      <ProfileTabHome />
+      <ProfileTabHome displayUser={displayUser} />
     </>
   );
 }

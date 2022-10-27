@@ -19,9 +19,9 @@ export const EditDisplayName = () => {
 
   const onClick = () => {
     if (inputName === "") return;
-    update(usersRef, { displayName: inputName });
+    update(usersRef, { userName: inputName });
     setUserData({
-      displayName: inputName,
+      userName: inputName,
       userId: userData.userId,
       userPhoto: userData.userPhoto,
     });
@@ -29,7 +29,7 @@ export const EditDisplayName = () => {
 
   return (
     <>
-      <p>{userData.displayName}</p>
+      <p>{userData.userName}</p>
       <input
         type="text"
         onChange={(e) => {

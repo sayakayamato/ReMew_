@@ -7,6 +7,7 @@ import { useDataCreate } from "../../hooks/useDataCreate";
 import "../../css/Chats.css";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useFriendsListContext } from "../../contexts/FriendsListContext";
+import { useUserDataContext } from "../../contexts/UserDataContext";
 
 export function ChatContents({ feedId }) {
   //inputに入力したチャットテキスト
@@ -17,6 +18,7 @@ export function ChatContents({ feedId }) {
   const queryKey = "feedId";
   const queryValue = feedId;
   const { user } = useAuthContext();
+  const { userData } = useUserDataContext()
   const { friendsList } = useFriendsListContext();
   const [anonymousUsername, setAnonymousUsername] = useState("");
   const [loggedInUserId, setLoggedInUserId] = useState("");
@@ -27,8 +29,8 @@ export function ChatContents({ feedId }) {
 
   useEffect(() => {
     if (user) {
-      setLoggedInUserId(user.uid);
-      setLoggedInUsername(user.displayName);
+      setLoggedInUserId(userData.uid);
+      setLoggedInUsername(userData.userName);
     } else {
       setLoggedInUserId("anonymous");
       setLoggedInUsername("");

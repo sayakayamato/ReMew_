@@ -10,6 +10,7 @@ import { AddFriendProcess } from "./components/friendPages/AddFriendProcess";
 // import { AdminPage } from "./components/adminPages/AdminPage";
 import { Profs } from "./components/homePages/Profs";
 import { CollectFeedbackWithHeader } from "./components/homePages/CollectFeedbackWithHeader";
+import { ProfilePage } from "./components/myPages/ProfilePage";
 
 export const RouterConfig = () => {
   return (
@@ -28,6 +29,7 @@ export const RouterConfig = () => {
         <Route path="/chats/:feedID" element={<Chats />} />
         <Route path="/profs/:profId" element={<Profs />} />
         <Route path="/settings" element={<SettingPage />} />
+        <Route path="/profile/:displayId" element={<ProfilePage />} />
         {/* {process.env.REACT_APP_ADMIN_MODE === "ON" && (
           <Route path="/admin" element={<AdminPage />} />
         )} */}

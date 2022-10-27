@@ -74,7 +74,9 @@ export const FeedComponent = ({ friendsMode }) => {
                 friendsList.find((e) => e.userId === content.userId).userPhoto
               }
             ></Avatar>
-            <p className="feed_user_name">{friendsList.find((e) => e.userId === content.userId).userName}</p>
+            <p className="feed_user_name">
+              {friendsList.find((e) => e.userId === content.userId).userName}
+            </p>
             <p
               className="feed_contents_text"
               onClick={WhatFeed}

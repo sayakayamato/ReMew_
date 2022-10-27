@@ -43,7 +43,7 @@ export const FileUpLoader = ({ imageType }) => {
             update(listRef, { userPhoto: url });
             console.log("3")
             setUserData({
-              displayName: userData.displayName,
+              userName: userData.userName,
               userId: userData.userId,
               userPhoto: url,
               background: userData.background,
@@ -52,7 +52,7 @@ export const FileUpLoader = ({ imageType }) => {
           } else if (imageType === "backgrounds") {
             update(listRef, { background: url });
             setUserData({
-              displayName: userData.displayName,
+              userName: userData.userName,
               userId: userData.userId,
               userPhoto: userData.userPhoto,
               background: url,

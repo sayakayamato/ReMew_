@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 
 import { useDataCreate } from "../../hooks/useDataCreate";
-import { useAuthContext } from "../../contexts/AuthContext";
+import { useUserDataContext } from "../../contexts/UserDataContext";
 
 export function CollectFeedback({ initialText }) {
   //useLocationを使ってQuestionDetailContnetsからのstateを受け取る
@@ -31,9 +31,9 @@ export function CollectFeedback({ initialText }) {
     setValue(inputValue);
   };
 
-  const { user } = useAuthContext();
-  const logedInUserId = user.uid;
-  const logedInUsername = user.displayName;
+  const { userData } = useUserDataContext();
+  const logedInUserId = userData.userId;
+  const logedInUsername = userData.userName;
 
   const dataCreate = useDataCreate;
 

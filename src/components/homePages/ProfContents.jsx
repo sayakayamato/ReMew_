@@ -5,15 +5,15 @@ import { useDataList } from "../../hooks/useDataList";
 import { useDataCreate } from "../../hooks/useDataCreate";
 
 import "../../css/Chats.css";
-import { useAuthContext } from "../../contexts/AuthContext";
 import { useFriendsIdContext } from "../../contexts/FriendsIdContext";
 import { useFriendsListContext } from "../../contexts/FriendsListContext";
+import { useUserDataContext } from "../../contexts/UserDataContext";
 
 export function ProfContents({ profId, profText, categoryId }) {
   const [inputChatText, setInputChatText] = useState("");
   const dataCreate = useDataCreate;
   const tableName = "profs";
-  const { user } = useAuthContext();
+  const { userData } = useUserDataContext();
   const { friendsList } = useFriendsListContext();
 
   const dataList = useDataList;
@@ -36,12 +36,12 @@ export function ProfContents({ profId, profText, categoryId }) {
     const newChatObject = {
       content: inputChatText,
       profId: profId,
-      resUserId: user.uid,
-      resUsername: user.displayName,
+      resUserId: userData.userId,
+      resUsername: userData.userName,
       categoryId: categoryId,
       profContent: profText,
-      combProfUserId: profId + user.uid,
-      combCatgoryUserId: categoryId + user.uid,
+      combProfUserId: profId + userData.userId,
+      combCatgoryUserId: categoryId + userData.userId,
       createdAt: new Date().toISOString(),
     };
     const tableName = "profs";
@@ -58,7 +58,7 @@ export function ProfContents({ profId, profText, categoryId }) {
               return (
                 <div
                   key={key}
-                  className={item.resUserId === user.uid ? "right" : "left"}
+                  className={item.resUserId === userData.userId ? "right" : "left"}
                 >
                   <Avatar
                     src={

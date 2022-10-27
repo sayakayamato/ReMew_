@@ -8,7 +8,7 @@ export const useAuthContext = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({ uid: "", displayName: "", photoURL: "" });
+  const [user, setUser] = useState({ uid: "", userName: "", photoURL: "", background: "" });
   const [loading, setLoading] = useState(true);
 
   const value = {

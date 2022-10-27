@@ -7,8 +7,8 @@ export function KeywordsContents() {
     <>
       <Tabs isFitted variant="enclosed">
         <TabList mb="1em">
-          <Tab>Objective</Tab>
-          <Tab>Subjective</Tab>
+          <Tab>Objective準備中</Tab>
+          <Tab>Subjective準備中</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>

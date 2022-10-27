@@ -1,22 +1,20 @@
 import { Box } from "@chakra-ui/react";
-import { useAuthContext } from "../../contexts/AuthContext";
 import { useDataList } from "../../hooks/useDataList";
 
 import "../../css/Proflie_Card.css";
 
-export function ProfileCardContents({ profTitle, categoryId }) {
-  const { user } = useAuthContext();
+export function ProfileCardContents({ profTitle, categoryId, displayUser }) {
   const dataList = useDataList;
   const tableName = "profs";
   const queryKey = "combCatgoryUserId";
-  const queryValue = categoryId + user.uid;
+  const queryValue = categoryId + displayUser.userId;
   const { data } = dataList(tableName, queryKey, queryValue);
 
   return (
     <>
       <div className="card_wrap">
         <div className="card_input_wrap">
-          {data &&
+          {data && Object.keys(data).length ? (
             Object.entries(data).map(([key, item]) => {
               return (
                 <Box
@@ -34,7 +32,10 @@ export function ProfileCardContents({ profTitle, categoryId }) {
                   </p>
                 </Box>
               );
-            })}
+            })
+          ) : (
+            <p>まだ回答がありません</p>
+          )}
         </div>
       </div>
     </>
