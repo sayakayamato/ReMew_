@@ -9,7 +9,7 @@ import {
 import { ProfileCardContents } from "./ProfileCardContents";
 import { useFirebase } from "../../hooks/useFirebase";
 
-export function ProfileTabHome() {
+export function ProfileTabHome({ displayUser }) {
   const tableName = "profCategory";
 
   const { data } = useFirebase(tableName);
@@ -35,9 +35,6 @@ export function ProfileTabHome() {
               categoryList.map((category) => {
                 return <Tab key={category.categoryId}>{category.content}</Tab>;
               })}
-            {/* <Tab>Like</Tab>
-            <Tab>Values</Tab>
-            <Tab>Activity</Tab> */}
           </TabList>
           <TabPanels>
             {categoryList &&
@@ -47,6 +44,7 @@ export function ProfileTabHome() {
                     <ProfileCardContents
                       profTitle={category.content}
                       categoryId={category.categoryId}
+                      displayUser={displayUser}
                     />
                   </TabPanel>
                 );

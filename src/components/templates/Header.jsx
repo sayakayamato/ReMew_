@@ -86,12 +86,13 @@ export const Header = () => {
     friendsUniqueId &&
       friendsUniqueId.map((fuid) => {
         update(child(tableRef, fuid), {
-          userName: userData.displayName,
+          userName: userData.userName,
           userPhoto: userData.userPhoto,
+          background: userData.background,
         });
         return null;
       });
-  }, [friendsUniqueId, userData.displayName, userData.userPhoto]);
+  }, [friendsUniqueId, userData.userName, userData.userPhoto]);
 
   return (
     <div className="top_bar">
@@ -99,7 +100,7 @@ export const Header = () => {
         <Link to="/">
           <img
             src="ReMew_logo.jpg"
-            alt=""
+            alt="Homeに戻る"
             width={"90px"}
             className="service_name"
           />
@@ -119,7 +120,7 @@ export const Header = () => {
         <Link to="/settings">
           <Wrap className="top_profile_icon">
             <WrapItem>
-              <Avatar name={userData.displayName} src={userData.userPhoto} />
+              <Avatar name={userData.userName} src={userData.userPhoto} />
             </WrapItem>
           </Wrap>
         </Link>

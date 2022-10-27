@@ -12,10 +12,12 @@ import { CollectFeedback } from "../homePages/CollectFeedback";
 import { MyProfilePage } from "../myPages/MyprofilePage";
 import { useTabContext } from "../../contexts/TabContext";
 import { Header } from "./Header";
+import { useUserDataContext } from "../../contexts/UserDataContext";
 
 export function UnderTabBar() {
   const { user } = useAuthContext();
   const { tab, setTab } = useTabContext();
+  const { userData } = useUserDataContext();
 
   if (!user) {
     return <Navigate replace to="/login" />;
@@ -40,7 +42,7 @@ export function UnderTabBar() {
               <CollectFeedback initialText="" />
             </TabPanel>
             <TabPanel>
-              <MyProfilePage />
+              <MyProfilePage displayUser={userData} />
             </TabPanel>
             <TabPanel>
               <p className="friend">Friend</p>

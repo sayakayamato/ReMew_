@@ -1,10 +1,10 @@
 import { FriendsComponent } from "./FriendsComponent";
 import { useFriendsListContext } from "../../contexts/FriendsListContext";
 import { sortByStrings } from "../../lib/util/sortByStrings";
-import { useAuthContext } from "../../contexts/AuthContext";
+import { useUserDataContext } from "../../contexts/UserDataContext";
 
 export function FriendsContents() {
-  const { user } = useAuthContext();
+  const { userData } = useUserDataContext();
   const { friendsList } = useFriendsListContext();
   const sortedFriendsList = sortByStrings(
     friendsList ? friendsList : [],
@@ -14,14 +14,11 @@ export function FriendsContents() {
     <ul style={{ listStyle: "none" }}>
       {sortedFriendsList &&
         sortedFriendsList.map((item) => {
-          return item.userId === user.uid ? (
+          return item.userId === userData.userId ? (
             <li key={item.userId}></li>
           ) : (
             <li key={item.userId}>
-              <FriendsComponent
-                userPhoto={item.userPhoto}
-                userName={item.userName}
-              />
+              <FriendsComponent displayUser={item} />
             </li>
           );
         })}

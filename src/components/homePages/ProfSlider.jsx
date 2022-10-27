@@ -12,6 +12,9 @@ export const ProfSlider = () => {
   const WhatCategory = (e) => {
     const categoryName = e.target.innerText;
     const categoryId = e.target.id;
+    console.log("categoryId");
+    console.log(e.target);
+    console.log(categoryId);
     navigate("/profsamples", {
       state: { categoryName: categoryName, categoryId: categoryId },
     });
@@ -32,8 +35,8 @@ export const ProfSlider = () => {
         {Object.entries(data).map(([key, item]) => (
           <SwiperSlide key={key} className="category_box">
             <button onClick={WhatCategory}>
-              <img className="swiper_img" src={item.image || ""} alt="" />
               <div className="category_name" id={key}>
+                <img src={item.image || ""} alt="" />
                 {String(item.content)}
               </div>
             </button>

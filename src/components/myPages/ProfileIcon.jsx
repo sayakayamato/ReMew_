@@ -1,16 +1,13 @@
 import { Avatar, Wrap, WrapItem } from "@chakra-ui/react";
 import "../../css/ProfileInfo.css";
-import { useUserDataContext } from "../../contexts/UserDataContext";
-export function ProfileIcon() {
-  const { userData } = useUserDataContext();
-
+export function ProfileIcon({ displayUser }) {
   return (
     <>
       <Wrap>
         <WrapItem>
           <Avatar
-            name={userData.displayName}
-            src={userData.userPhoto}
+            name={displayUser.userName}
+            src={displayUser.userPhoto}
             size="xl"
           />
         </WrapItem>

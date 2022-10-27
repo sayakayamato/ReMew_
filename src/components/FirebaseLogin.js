@@ -23,13 +23,13 @@ function FirebaseLogin() {
       } else {
         const usersRef = ref(db, "users/" + user.uid);
         onValue(usersRef, (snapshot) => {
-          console.log("snapshot.val()")
-          console.log(snapshot.val())
+          // console.log("snapshot.val()");
+          // console.log(snapshot.val());
           if (snapshot.val() === null) {
-            console.log("reset users data")
+            console.log("reset users data");
             set(usersRef, {
               userId: user.uid,
-              displayName: user.displayName,
+              userName: user.displayName,
               userPhoto: user.photoURL,
               background:
                 "https://firebasestorage.googleapis.com/v0/b/prof3know.appspot.com/o/images%2Fbackgrounds%2Frij7aj2q42.jpg?alt=media&token=32de7aef-6952-481e-8453-fda08f612148",
@@ -39,6 +39,8 @@ function FirebaseLogin() {
               userName: user.displayName,
               userPhoto: user.photoURL,
               ownerId: user.uid,
+              background:
+                "https://firebasestorage.googleapis.com/v0/b/prof3know.appspot.com/o/images%2Fbackgrounds%2Frij7aj2q42.jpg?alt=media&token=32de7aef-6952-481e-8453-fda08f612148",
             };
             const tableLoggedIn = `friends`;
             dataCreate(tableLoggedIn, friendUserData);

@@ -6,7 +6,9 @@ export const useAddFriend = (
   loggedInUserName,
   friendUserName,
   loggedInUserPhotoUrl,
-  friendUserPhotoUrl
+  friendUserPhotoUrl,
+  loggedInUserBackground,
+  friendUserBackground
 ) => {
   const dataCreate = useDataCreate;
 
@@ -27,13 +29,15 @@ export const useAddFriend = (
     userId: friendUserId,
     userName: friendUserName,
     userPhoto: friendUserPhotoUrl,
-    ownerId: loggedInUserId
+    ownerId: loggedInUserId,
+    background: friendUserBackground,
   };
   const loggedInUserData = {
     userId: loggedInUserId,
     userName: loggedInUserName,
     userPhoto: loggedInUserPhotoUrl,
-    ownerId: friendUserId
+    ownerId: friendUserId,
+    background: loggedInUserBackground,
   };
 
   const tableName = `friends`;

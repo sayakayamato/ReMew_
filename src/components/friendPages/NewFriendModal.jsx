@@ -9,14 +9,15 @@ import {
   Button,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useAuthContext } from "../../contexts/AuthContext";
 import QRCode from "react-qr-code";
 import { Link } from "react-router-dom";
+import { useUserDataContext } from "../../contexts/UserDataContext";
 
 export function NewFriendModal() {
-  const { user } = useAuthContext();
+  const { userData } = useUserDataContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const qrCodeUrl = process.env.REACT_APP_BASE_URL + "/friend/" + user.uid;
+  const qrCodeUrl =
+    process.env.REACT_APP_BASE_URL + "/friend/" + userData.userId;
   return (
     <>
       <Button onClick={onOpen} color={"black"}>
@@ -31,7 +32,7 @@ export function NewFriendModal() {
           <ModalBody>
             <div>
               <p>QRコードを表示する</p>
-              <span>{user.uid}</span>
+              <span>{userData.userId}</span>
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <div
                   style={{
@@ -55,7 +56,7 @@ export function NewFriendModal() {
                   />
                 </div>
                 <Link
-                  to={`/friend?userId=${user.uid}&userName=${user.displayName}`}
+                  to={`/friend?userId=${userData.userId}&userName=${userData.userName}`}
                 >
                   リンク
                 </Link>
