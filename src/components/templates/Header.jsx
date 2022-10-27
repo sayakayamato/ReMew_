@@ -99,7 +99,7 @@ export const Header = () => {
       <Flex>
         <Link to="/">
           <img
-            src="ReMew_logo.jpg"
+            src={`${process.env.PUBLIC_URL}/ReMew_logo.jpg`}
             alt="Homeに戻る"
             width={"90px"}
             className="service_name"
