@@ -10,8 +10,18 @@
     background: white;
 }
 
+.feed_under_space{
+    height: 60px;
+    width: 100%;
+}
 
+.feed_user_info{
+    display: flex;
+}
 
+.feed_user_name{
+    margin: 7px;
+}
 
 
 
