@@ -36,7 +36,7 @@ export const ProfSlider = () => {
           <SwiperSlide key={key} className="category_box">
             <button onClick={WhatCategory}>
               <div className="category_name" id={key}>
-                <img src={item.image || ""} alt="" />
+                <img className="swiper_img" src={item.image || ""} alt="" />
                 {String(item.content)}
               </div>
             </button>

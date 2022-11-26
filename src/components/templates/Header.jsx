@@ -83,7 +83,7 @@ export const Header = () => {
   useEffect(() => {
     const tableName = "friends";
     const tableRef = child(ref(db), tableName);
-    friendsUniqueId &&
+    friendsUniqueId && userData &&
       friendsUniqueId.map((fuid) => {
         update(child(tableRef, fuid), {
           userName: userData.userName,
